@@ -14,13 +14,13 @@ const navItems = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200/40 bg-[rgba(255,255,255,0.75)] backdrop-blur-xl transition-colors dark:border-slate-800/60 dark:bg-[rgba(9,12,23,0.72)]">
+    <header className="sticky top-0 z-20 border-b border-slate-200/40 bg-[rgba(255,255,255,0.9)] backdrop-blur-xl transition-colors dark:border-slate-800/60 dark:bg-[rgba(6,8,20,0.85)]">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-12 lg:px-24">
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex items-center gap-3 text-sm font-semibold tracking-wide"
+          className="flex items-center gap-3 text-sm font-semibold tracking-wide text-slate-700 transition-colors dark:text-slate-100"
         >
           <span className="accent-gradient inline-block h-8 w-8 rounded-full opacity-80" />
           <span>Harsh Jani</span>
@@ -30,7 +30,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm text-muted hover:text-foreground underline-gradient transition-colors"
+              className="text-sm text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100 underline-gradient"
             >
               {item.label}
             </Link>
