@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f8fb;
+  --foreground: #0b0f19;
+  --muted: #56617f;
+  --muted-foreground: #6a728d;
+  --card: rgba(255, 255, 255, 0.85);
+  --border: rgba(15, 23, 42, 0.06);
+  --accent: linear-gradient(135deg, #5b6ef5, #9b67ff);
+  --gradient: linear-gradient(135deg, rgba(91, 110, 245, 0.12), rgba(155, 103, 255, 0.1));
+  --radius-lg: 1rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #05060f;
+  --foreground: #f5f7ff;
+  --muted: #9aa3c4;
+  --muted-foreground: #b1b9d6;
+  --card: rgba(15, 17, 32, 0.8);
+  --border: rgba(148, 163, 184, 0.1);
+  --accent: linear-gradient(135deg, #6d7bff, #b78aff);
+  --gradient: linear-gradient(135deg, rgba(109, 123, 255, 0.18), rgba(183, 138, 255, 0.14));
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-space-grotesk), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(109, 123, 255, 0.35);
+  color: inherit;
+}
+
+@layer utilities {
+  .text-muted {
+    color: var(--muted);
+  }
+
+  .text-muted-foreground {
+    color: var(--muted-foreground);
+  }
+
+  .glass-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(24px);
+  }
+
+  .accent-gradient {
+    background-image: var(--accent);
+  }
+
+  .surface-gradient {
+    background-image: var(--gradient);
+  }
+
+  .underline-gradient {
+    position: relative;
+  }
+
+  .underline-gradient::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.35rem;
+    width: 100%;
+    height: 2px;
+    background-image: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 200ms ease;
+  }
+
+  .underline-gradient:hover::after,
+  .underline-gradient:focus-visible::after {
+    transform: scaleX(1);
+  }
 }
